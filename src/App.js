@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  const [state, setState] = useState({
+    count: 0
+  })
+
+  const addOne = () => {
+    setState({count: state.count += 1})
+  }
+
+  const subtractOne = () => {
+    setState({ count: state.count -= 1 })
+  }
+
+  let content = (
+    <React.Fragment> 
+      <h1 className="text-center pt-5">Counter</h1>
+      <div className="row">
+        <button onClick={subtractOne} style={{position: "absolute", top: "20%", left: "50%"}}>-</button>
+        <button onClick={addOne} style={{position: "absolute", top: "20%", right: "50%"}}>+</button>
+      </div>
+
+      <h1 className="text-center">{state.count}</h1>
+
+    </React.Fragment>
+  )
+
+  return content;
 }
-
 export default App;
